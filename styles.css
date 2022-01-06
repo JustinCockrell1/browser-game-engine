@@ -18,4 +18,14 @@ div {
     position: absolute;
     left:0px;
     top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(5,5);
+    transform: rotate(45deg);
+}
+
+button {
+
+    /* transform:scale(2,2); */
 }
