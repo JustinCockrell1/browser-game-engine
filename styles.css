@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-div {
+.mainscreen {
     position: fixed;
     left: 200px;
     background-color: grey;
@@ -21,11 +21,14 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: scale(5,5);
-    transform: rotate(45deg);
+    transform: scale(3,3);
 }
 
 button {
 
     /* transform:scale(2,2); */
+}
+input {
+    width: 100%;
+
 }

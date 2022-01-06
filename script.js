@@ -1,21 +1,61 @@
-const body = document.querySelector(".mainscreen");
+const screen = document.querySelector(".mainscreen");
 
 
 
 const div = document.createElement("div");
-const btn = document.createElement("button");
+const btn = document.createElement("input");
 div.style.left = "10px";
 div.style.top = "100px";
 div.classList.add("object");
 btn.textContent="hello";
 div.appendChild(btn);
 let divX = 10;
+let camera = {x:0,y:0};
 
-body.appendChild(div)
+let target = null;
+let offsetX = 0;
+let offsetY = 0;
 
-window.setInterval(()=>{
-divX+=1;
-div.style.left = `${divX}px`;
-console.log("hello");
+screen.appendChild(div)
 
-}, 100);
+// window.setInterval(()=>{
+// divX+=1;
+
+// screen.style.left = `${-camera.x}px`;
+// screen.style.top = `${-camera.y}px`;
+// div.style.left = `${divX}px`;
+// const rect = div.getBoundingClientRect();
+
+
+// }, 100);
+
+window.addEventListener("keydown", (e)=>{
+    if(e.key=="w") {
+        camera.y--;
+    }
+    else if(e.key=="s") {
+        camera.y++;
+    }
+    else if(e.key=="a") {
+        camera.x--;
+    }
+    else if(e.key=="d") {
+        camera.x++;
+    }
+});
+
+window.addEventListener("click",(e)=>{
+    console.log(e.target);
+    target = e.target;
+    let rect = e.target.getBoundingClientRect();
+    offsetX = e.clientX -rect.x;
+    offsetY = e.clientY - rect.y;
+    console.log(rect.y + " " + e.clientY);
+});
+
+window.addEventListener("mousemove",(e)=>{
+    if(target!=null && target.classList.contains("object")) {
+        target.style.left = `${e.clientX-offsetX}px`;
+        target.style.top = `${e.clientY-offsetY}px`;
+    }
+});
