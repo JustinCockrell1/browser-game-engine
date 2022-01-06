@@ -44,14 +44,20 @@ window.addEventListener("keydown", (e)=>{
     }
 });
 
-window.addEventListener("click",(e)=>{
+window.addEventListener("mousedown",(e)=>{
     console.log(e.target);
+   
+
     target = e.target;
     let rect = e.target.getBoundingClientRect();
     offsetX = e.clientX -rect.x;
     offsetY = e.clientY - rect.y;
-    console.log(rect.y + " " + e.clientY);
+
+    console.log(rect.y + " " + e.clientY + " " + offsetY);
 });
+window.addEventListener("mouseup", (e) =>{
+    target = null;
+})
 
 window.addEventListener("mousemove",(e)=>{
     if(target!=null && target.classList.contains("object")) {
